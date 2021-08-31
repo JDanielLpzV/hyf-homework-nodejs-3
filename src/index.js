@@ -24,11 +24,18 @@ app.post('/user',(req,res)=>{
         res.end('User not added');
     }
 });
-
-
 app.get('/users',(req,res)=>{
     res.send(users);
-})
+});
+app.delete('/user/:id',(req,res)=>{
+    let id= req.params.id;
+    if(users[id]){
+        res.status(202).send(users[id]);
+        users.splice(id,1);
+    }else{
+        res.status(204).json({error:"User not found"});
+    }
+});
 
 
 app.listen(port,()=>console.log('server is running'));
