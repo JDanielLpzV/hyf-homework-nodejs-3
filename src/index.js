@@ -26,7 +26,9 @@ app.post('/user',(req,res)=>{
 });
 
 
-
+app.get('/users',(req,res)=>{
+    res.send(users);
+})
 
 
 app.listen(port,()=>console.log('server is running'));
